@@ -7,7 +7,7 @@ import {FiKey} from "react-icons/fi"; //feathericons for react
 // import logo from "../assets/images/mplogo.png"
 
 const Navbar = ()=>(
-    <Flex p="2" borderbottom="1px" borderColor="yellow.100" bg="#e8dddc" >
+    <Flex p="2" borderbottom="1px" borderColor="yellow.100" bg="#d5bebb" >
         {/* <Image src={logo} alt="logo"/> */}
         <Box fontSize="4xl" justifyContent="center" marginLeft="40%" fontWeight="bold" color="blue.300">
             <Link href="/" paddingLeft="3">Magnum Properties</Link>
