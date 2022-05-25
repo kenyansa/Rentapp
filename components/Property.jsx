@@ -24,7 +24,7 @@ const Property = ({property: {coverPhoto, price, rentFrequency, rooms, title, ba
                         </Box>
                     </Flex>
                     <Flex alignItems="center" p="2" justifyContent="space-between" w="250px" color="violet.400" >
-                        {rooms} 
+                        {rooms} <FaBed />| {baths}<FaBath/> | {millify(area)} sqft <BsGridFill/>
                     </Flex>
                 </Flex>
             </Box>
