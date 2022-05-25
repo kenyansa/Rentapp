@@ -1,28 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import {Flex, Box, Text, Button} from "@chakra-ui/react";
-
 import Property from "../components/Property";
 import {baseUrl, fetchApi} from "../utilities/fetchApi"
 
-
 const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, imageUrl}) => (
-  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
-    <Image src={imageUrl} width={500} height={300} alt="banner" />
+  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="20">
+    <Image src={imageUrl} width={500} height={280} alt="banner" />
     <Box p="5">
-      <Text color="blue.500" fontSize="sm" fontWeight="medium">
+      <Text color="blue.400" fontSize="2xl" fontWeight="medium">
         {purpose}
       </Text>
-      <Text fontSize="3xl" fontWeight="bold">
+      <Text fontSize="lg" fontWeight="bold">
         {title1}
         <br />
         {title2}
       </Text>
-      <Text fontSize="lg" paddingTop="3" paddingBottom="3"  color="blue.700">{desc1}<br /> {desc2}
+      <Text fontSize="lg" paddingTop="3" paddingBottom="2"  color="green.300">{desc1}<br /> {desc2}
       </Text>
       <Button fontSize="xl">
         <Link href={LinkName}>{buttonText}</Link>
-
       </Button>
     </Box>
   </Flex>
@@ -41,8 +38,8 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/180245179/262dac16806b47b6989a42a689a22552"
       />
       {/* fetching API properties and mapping over them. */}
-      {propertiesForSale.map((property)=><Property property={property} key={property.id} />)}
-      <Flex flexWrap="wrap">
+      <Flex flexWrap="wrap" justifyContent="center">
+        {propertiesForSale.map((property)=><Property property={property} key={property.id} />)}
       </Flex>
       <Banner //the banner is the static photo that marks the beinning of the buying section
         purpose="BUY A HOME/SPACE"
@@ -55,7 +52,9 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/183545387/7a5d077081d34c428f0ecbf064b85d53"
       />
       {/* fetching API properties and mapping over them. */}
+      <Flex flexWrap="wrap" justifyContent="center">
       {propertiesForRent.map((property)=><Property property={property} key={property.id} />)}
+      </Flex>
     </Box>
   );
 }
