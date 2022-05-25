@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {Flex, Box, Text, Button} from "@chakra-ui/react";
 
+import {baseUrl, fetchApi} from "../utilities/fetchApi"
+
+
 const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, imageUrl}) => (
   <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
     <Image src={imageUrl} width={500} height={300} alt="banner" />
@@ -23,10 +26,11 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, i
     </Box>
   </Flex>
 );
-export default function Home() {
+export default function Home(propertiesForSale, propertiesForRent) {
+  console.log(propertiesForSale, propertiesForRent);
   return (
     <Box>
-      <Banner
+      <Banner //the banner is the static photo of the renting section
         purpose="RENT A HOME/SPACE"
         title1="Rental Homes for"
         title2="Everyone"
@@ -34,12 +38,15 @@ export default function Home() {
         desc2="and more"
         buttonText="Explore Renting Here"
         LinkName="/search?purpose=for-rent"
-        imageUrl="https://ap.rdcpix.com/406134584/b088764768ade37f3766d169079fb126l-m0xd-w480_h480_q80.jpg"
+        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/180245179/262dac16806b47b6989a42a689a22552"
       />
       <Flex flexWrap="wrap">
         {/* fetching API properties and mapping over them. */}
+        {propertiesForRent.map((property) => (
+          <Property property={property} key={property.id} />
+        ))}
       </Flex>
-      <Banner
+      <Banner //the banner is the static photo that marks the beinning of the buying section
         purpose="BUY A HOME/SPACE"
         title1="Find, Buy and Own Your"
         title2="Dream Home"
@@ -47,9 +54,25 @@ export default function Home() {
         desc2="and more"
         buttonText="Explore Buying Here"
         LinkName="/search?purpose=for-sale"
-        imageUrl="https://ap.rdcpix.com/2062405879/642bca386732d79c6fff329322df786al-m0xd-w480_h480_q80.jpg"
+        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/183545387/7a5d077081d34c428f0ecbf064b85d53"
       />
       {/* fetching API properties and mapping over them. */}
+      {propertiesForSale.map((property) => (
+        <Property property={property} key={property.id} />
+      ))}
     </Box>
   );
+}
+
+export async function getStaticProps(){
+  const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=8`)
+  const propertyForRent = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=8`
+  );
+  return {
+    props: {
+      propertiesForSale: propertyForSale?.hits,
+      propertiesForRent: propertyForRent?.hits,
+    },
+  };
 }
