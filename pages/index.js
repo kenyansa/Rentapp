@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {Flex, Box, Text, Button} from "@chakra-ui/react";
 
+import Property from "../components/Property";
 import {baseUrl, fetchApi} from "../utilities/fetchApi"
 
 
@@ -26,8 +27,10 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, i
     </Box>
   </Flex>
 );
-export default function Home(propertiesForSale, propertiesForRent) {
+export default function Home({propertiesForSale, propertiesForRent}) {
+
   console.log(propertiesForSale, propertiesForRent);
+ 
   return (
     <Box>
       <Banner //the banner is the static photo of the renting section
@@ -40,11 +43,9 @@ export default function Home(propertiesForSale, propertiesForRent) {
         LinkName="/search?purpose=for-rent"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/180245179/262dac16806b47b6989a42a689a22552"
       />
+      {/* fetching API properties and mapping over them. */}
+      {propertiesForSale.map((property)=><Property property={property} key={property.id} />)}
       <Flex flexWrap="wrap">
-        {/* fetching API properties and mapping over them. */}
-        {propertiesForRent.map((property) => (
-          <Property property={property} key={property.id} />
-        ))}
       </Flex>
       <Banner //the banner is the static photo that marks the beinning of the buying section
         purpose="BUY A HOME/SPACE"
@@ -57,9 +58,7 @@ export default function Home(propertiesForSale, propertiesForRent) {
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/183545387/7a5d077081d34c428f0ecbf064b85d53"
       />
       {/* fetching API properties and mapping over them. */}
-      {propertiesForSale.map((property) => (
-        <Property property={property} key={property.id} />
-      ))}
+      {propertiesForRent.map((property)=><Property property={property} key={property.id} />)}
     </Box>
   );
 }
