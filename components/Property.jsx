@@ -14,6 +14,14 @@ const Property = ({property: {coverPhoto, price, rentFrequency, rooms, title, ba
             <Box>
                 <Image src={coverPhoto ? coverPhoto.url : DefaultImage} width="400" height="250" alt="mansionete" />
             </Box>
+            <Box w="full">
+                <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
+                    <Flex alignItems="center">
+                        <Box paddingRight="3" color="violet.400">{isVerified && <GoVerified />}</Box>
+                        <Text fontWeight="bold" fontSize="lg">KES{price}{rentFrequency && `/${rentFrequency}`}</Text>
+                    </Flex>
+                </Flex>
+            </Box>
         </Flex>
     </Link>
 )
