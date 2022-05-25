@@ -27,10 +27,7 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, i
     </Box>
   </Flex>
 );
-export default function Home({propertiesForSale, propertiesForRent}) {
-
-  console.log(propertiesForSale, propertiesForRent);
- 
+export default function Home({propertiesForSale, propertiesForRent}) { 
   return (
     <Box>
       <Banner //the banner is the static photo of the renting section
