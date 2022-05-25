@@ -3,13 +3,17 @@ import {Menu, MenuList, MenuButton, MenuItem, IconButton, Flex, Box, Spacer} fro
 import {FcMenu, FcHome, FcAbout} from "react-icons/fc"; //flat color icons for react
 import {BsSearch} from "react-icons/bs"; //bootstrap icons for react
 import {FiKey} from "react-icons/fi"; //feathericons for react
+// import Image from "next/image";
+// import logo from "../assets/images/mplogo.png"
 
 const Navbar = ()=>(
-    <Flex p="2" borderbottom="1px" borderColor="gray.100">
-        <Box fontSize="4xl" fontWeight="bold" color="blue.300">
+    <Flex p="2" borderbottom="1px" borderColor="yellow.100" bg="#e8dddc" >
+        {/* <Image src={logo} alt="logo"/> */}
+        <Box fontSize="4xl" justifyContent="center" marginLeft="40%" fontWeight="bold" color="blue.300">
             <Link href="/" paddingLeft="3">Magnum Properties</Link>
         </Box>
-        <Spacer />
+        {/* the spacer pushes the menu icons to the flush right */}
+        <Spacer /> 
         <Menu>
             <MenuButton as={IconButton} icon={<FcMenu />} variant="outlined" color="red.400" />
             <MenuList>

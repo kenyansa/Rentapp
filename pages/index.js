@@ -16,7 +16,7 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, LinkName, i
         <br />
         {title2}
       </Text>
-      <Text fontSize="lg" paddingTop="3" paddingBottom="2"  color="green.300">{desc1}<br /> {desc2}
+      <Text fontSize="lg" paddingTop="3" paddingBottom="2"  color="blue.300">{desc1}<br /> {desc2}
       </Text>
       <Button fontSize="xl">
         <Link href={LinkName}>{buttonText}</Link>
@@ -41,6 +41,7 @@ export default function Home({propertiesForSale, propertiesForRent}) {
       <Flex flexWrap="wrap" justifyContent="center">
         {propertiesForSale.map((property)=><Property property={property} key={property.id} />)}
       </Flex>
+
       <Banner //the banner is the static photo that marks the beinning of the buying section
         purpose="BUY A HOME/SPACE"
         title1="Find, Buy and Own Your"
