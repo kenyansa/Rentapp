@@ -26,6 +26,10 @@ const Property = ({property: {coverPhoto, price, rentFrequency, rooms, title, ba
                     <Flex alignItems="center" p="2" justifyContent="space-between" w="250px" color="violet.400" >
                         {rooms} <FaBed />| {baths}<FaBath/> | {millify(area)} sqft <BsGridFill/>
                     </Flex>
+                    <Text fontSize="lg">
+                        {/* displays the title of the photo is all characters are less than 30, else, it trancates the first 30 characters. */}
+                        {title.length > 30 ? `${title.substring(0,30)}...` : title} 
+                    </Text>
                 </Flex>
             </Box>
         </Flex>
