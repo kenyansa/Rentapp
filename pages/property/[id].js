@@ -4,6 +4,7 @@ import {BsGridFill} from "react-icons/bs" //react icons from bootsrap
 import {GoVerified} from"react-icons/go"; //react icons: verified icons
 import {millify} from "millify"; //millify is an npm for coverting long nos to human-readable strings
 import { baseUrl, fetchApi } from "../../utilities/fetchApi";
+import ImageScrollbar from "../../components/ImageScrollbar";
 
 //destructing the properties we need
 const PropertyDetails = ({propertyDetails: {price, rentFrequency, rooms, title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos }}) => (
