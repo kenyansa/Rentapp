@@ -42,7 +42,7 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         {propertiesForSale.map((property)=><Property property={property} key={property.id} />)}
       </Flex>
 
-      <Banner //the banner is the static photo that marks the beinning of the buying section
+      <Banner //the banner is the static photo that marks the beginning of the buying section
         purpose="BUY A HOME/SPACE"
         title1="Find, Buy and Own Your"
         title2="Dream Home"
