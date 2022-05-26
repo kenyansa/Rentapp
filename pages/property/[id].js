@@ -51,11 +51,75 @@ const PropertyDetails = ({
           {rooms} <FaBed />| {baths}
           <FaBath /> | {millify(area)} sqft <BsGridFill />
         </Flex>
-        <Text fontSize="sm">
-          {/* displays the title of the photo is all characters are less than 50, else, it trancates the first 50 characters. */}
-          {title.length > 50 ? `${title.substring(0, 50)}...` : title}
-        </Text>
+        <Box marginTop="2">
+          <Text fontSize="lg" marginButtom="2" fontWeight="bold">
+            {/* displays the full title of the photo */}
+            {title} <br />
+          </Text>
+          <Text LineHeight="2" color="black.300">
+            {description}
+          </Text>
+        </Box>
+        <Flex
+          flexWrap="wrap"
+          textTransform="uppercase"
+          justifyContent="space-between"
+        >
+          <Flex
+            justifyContent="space-between"
+            w="400px"
+            borderBottom="1px"
+            borderColor="black.300"
+            p="3"
+          >
+            <Text>Type</Text>
+            <Text fontWeight="bold">{type}</Text>
+          </Flex>
+          <Flex
+            justifyContent="space-between"
+            w="400px"
+            borderBottom="1px"
+            borderColor="black.300"
+            p="3"
+          >
+            <Text>Purpose</Text>
+            <Text fontWeight="bold">{purpose}</Text>
+          </Flex>
+          {furnishingStatus && (
+            <Flex
+              justifyContent="space-between"
+              w="400px"
+              borderBottom="1px"
+              borderColor="black.300"
+              p="3"
+            >
+              <Text>Furnishing Status</Text>
+              <Text fontWeight="bold">{furnishingStatus}</Text>
+            </Flex>
+          )}
+        </Flex>
       </Flex>
+      <Box>
+        {amenities.length && (
+          <Text fontSize="2xl" fontWeight="black" marginTop="5">
+            Amenities
+          </Text>
+        )}
+        <Flex flexWrap="wrap">
+          {amenities.map((item) =>
+            item.amenities.map((amenity) => (
+              <Text
+                fontWeight="bold"
+                color="pink"
+                bg="black"
+                key={amenity.text}
+              >
+                {amenity.text}
+              </Text>
+            ))
+          )}
+        </Flex>
+      </Box>
     </Box>
   </Box>
 );
