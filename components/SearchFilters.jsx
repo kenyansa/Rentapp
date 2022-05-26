@@ -14,7 +14,9 @@ const SearchFilters = () =>{
         const {query} = router;
         const values = getFilterValues(filterValues);
         values.forEach((item)=>{
+            if(item.value && filterValues?.[item.name]){
             query[item.name] = item.value
+            } //this segment allows the app to generate a URL of the searched for items only
         })
         router.push({pathname:path, query})
     }
