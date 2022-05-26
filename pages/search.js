@@ -6,6 +6,7 @@ import {BsFilter} from "react-icons/bs";
 import SearchFilters from "../components/SearchFilters";
 import Property from "../components/Property";
 import nores from "../assets/images/nores.png"
+import { fetchApi, baseUrl } from "../utilities/fetchApi";
 
 const Search = ({properties})=>{
     const [searchFilters, setSearchFilters] = useState(false); // for filtering the properties visible to the client
@@ -23,7 +24,7 @@ const Search = ({properties})=>{
           alignItems="center"
           fontWeight="bold"
           fontSize="2xl"
-          onClick={() => setSearchFilters((prevFilters) => !prevFilters)} //toggling the previous filters on/off
+          onClick={() => setSearchFilters(!searchFilters)} //toggling the previous filters on/off
         >
           <Text>Search the Rental Properies by Filters</Text>
           <Icon paddingLeft="2" w="8" as={BsFilter} />
@@ -35,7 +36,7 @@ const Search = ({properties})=>{
         </Text>
         <Flex flexWrap="wrap">
           {/* we are mapping over all our properties to be fetched and displaying a property component for each of the property */}
-          {[].map((property) => (
+          {properties.map((property) => (
             <Property property={property} key={property.id} />
           ))}
         </Flex>

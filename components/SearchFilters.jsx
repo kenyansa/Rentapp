@@ -5,10 +5,11 @@ import {MdCancel} from "react-icons/md"; //material design icons from react, for
 import Image from "next/image";
 
 const SearchFilters = () =>{
+    const [fitlers, setFilters] = useState({}); 
     return(
-        <Box>
-            searchFilters
-        </Box>
+        <Flex bg="gray.100" p="4" justifyContent="center" flexWrap="wrap">
+
+        </Flex>
     )
 }
 
