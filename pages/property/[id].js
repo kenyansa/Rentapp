@@ -8,21 +8,7 @@ import ImageScrollbar from "../../components/ImageScrollbar";
 
 //destructing the properties we need
 const PropertyDetails = ({
-  propertyDetails: {
-    price,
-    rentFrequency,
-    rooms,
-    title,
-    baths,
-    area,
-    agency,
-    isVerified,
-    description,
-    type,
-    purpose,
-    furnishingStatus,
-    amenities,
-    photos,
+  propertyDetails: {price, rentFrequency, rooms, title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos
   },
 }) => (
   <Box maxWidth="1000px" margin="auto" p="4">
@@ -41,13 +27,7 @@ const PropertyDetails = ({
             <Avatar size="sm" src={agency?.url} />
           </Box>
         </Flex>
-        <Flex
-          alignItems="center"
-          p="3"
-          justifyContent="space-between"
-          w="250px"
-          color="violet.400"
-        >
+        <Flex alignItems="center" p="3" justifyContent="space-between" w="250px" color="violet.400">
           {rooms} <FaBed />| {baths}
           <FaBath /> | {millify(area)} sqft <BsGridFill />
         </Flex>
@@ -60,18 +40,8 @@ const PropertyDetails = ({
             {description}
           </Text>
         </Box>
-        <Flex
-          flexWrap="wrap"
-          textTransform="uppercase"
-          justifyContent="space-between"
-        >
-          <Flex
-            justifyContent="space-between"
-            w="400px"
-            borderBottom="1px"
-            borderColor="black.300"
-            p="3"
-          >
+        <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
+          <Flex justifyContent="space-between" w="400px" borderBottom="1px" borderColor="black.300" p="3">
             <Text>Type</Text>
             <Text fontWeight="bold">{type}</Text>
           </Flex>
@@ -86,13 +56,7 @@ const PropertyDetails = ({
             <Text fontWeight="bold">{purpose}</Text>
           </Flex>
           {furnishingStatus && (
-            <Flex
-              justifyContent="space-between"
-              w="400px"
-              borderBottom="1px"
-              borderColor="black.300"
-              p="3"
-            >
+            <Flex justifyContent="space-between" w="400px" borderBottom="1px" borderColor="black.300" p="3">
               <Text>Furnishing Status</Text>
               <Text fontWeight="bold">{furnishingStatus}</Text>
             </Flex>
@@ -108,12 +72,7 @@ const PropertyDetails = ({
         <Flex flexWrap="wrap">
           {amenities.map((item) =>
             item.amenities.map((amenity) => (
-              <Text
-                fontWeight="bold"
-                color="pink"
-                bg="black"
-                key={amenity.text}
-              >
+              <Text fontWeight="bold" color="pink" bg="black" borderRadius="5" margin="2" key={amenity.text}>
                 {amenity.text}
               </Text>
             ))
@@ -123,10 +82,7 @@ const PropertyDetails = ({
     </Box>
   </Box>
 );
-
 export default PropertyDetails;
-
-
 
 export async function getServerSideProps ({params: {id}}){
     const data = await fetchApi(`${baseUrl}/properties/detail?externalID=${id}`); 
